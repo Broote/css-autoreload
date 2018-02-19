@@ -5,7 +5,6 @@ function fetchModified(url) {
     return req.getResponseHeader('Last-Modified');
 }
 var styleSheets = document.querySelectorAll('link[data-reload="true"]');
-console.log(styleSheets);
 setInterval(function() {
     for (i = 0; i < styleSheets.length; ++i) {
         var styleSheetUrl = styleSheets[i].href.split('?')[0];
