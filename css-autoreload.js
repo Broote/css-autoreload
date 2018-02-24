@@ -9,6 +9,8 @@ setInterval(function() {
     for (i = 0; i < styleSheets.length; ++i) {
         var styleSheetUrl = styleSheets[i].href.split('?')[0];
         var styleSheetModified = new Date(fetchModified(styleSheetUrl)).getTime();
-        styleSheets[i].setAttribute('href', styleSheetUrl + "?m=" + styleSheetModified);
+        if(styleSheets[i].href.split('?m=')[1] != styleSheetModified) {
+            styleSheets[i].setAttribute('href', styleSheetUrl + "?m=" + styleSheetModified);
+        }
     }
 }, 1000);
