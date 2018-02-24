@@ -4,11 +4,11 @@ function fetchModified(url) {
     req.send(null);
     return req.getResponseHeader('Last-Modified');
 }
-var styleSheets = document.querySelectorAll('link[data-reload="true"]');
+var styleSheets = document.querySelectorAll('link[href*=".css"]');
 setInterval(function() {
     for (i = 0; i < styleSheets.length; ++i) {
         var styleSheetUrl = styleSheets[i].href.split('?')[0];
         var styleSheetModified = new Date(fetchModified(styleSheetUrl)).getTime();
         styleSheets[i].setAttribute('href', styleSheetUrl + "?m=" + styleSheetModified);
     }
-}, 500);
+}, 1000);
