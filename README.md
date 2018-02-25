@@ -1,6 +1,6 @@
 # CSS autoreload
 
-This script regularly checks if your stylesheet was modified and reloads it without refreshing the whole page.
+This script regularly checks if any of your CSS files were modified and reloads them without refreshing the whole page.
 
 Use it as a bookmarklet:
 
