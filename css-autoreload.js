@@ -9,7 +9,7 @@ setInterval(function() {
             var styleSheetModified = new Date(req.getResponseHeader('Last-Modified')).getTime();
             var styleSheetLength = req.getResponseHeader('Content-Length');
             if(styleSheets[i].href.split('?m=')[1] != styleSheetModified + "-" + styleSheetLength) {
-                console.log("Reloaded:");
+                console.log("Reloaded: " + styleSheetUrl);
                 console.log(req.getAllResponseHeaders());
                 styleSheets[i].setAttribute('href', styleSheetUrl + "?m=" + styleSheetModified + "-" + styleSheetLength);
             }
