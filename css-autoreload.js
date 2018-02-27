@@ -7,9 +7,11 @@ setInterval(function() {
         req.send(null);
         if(req.status == 200) {
             var styleSheetModified = new Date(req.getResponseHeader('Last-Modified')).getTime();
-            if(styleSheets[i].href.split('?m=')[1] != styleSheetModified) {
-                console.log("Reloaded " + styleSheetUrl);
-                styleSheets[i].setAttribute('href', styleSheetUrl + "?m=" + styleSheetModified);
+            var styleSheetLength = req.getResponseHeader('Content-Length');
+            if(styleSheets[i].href.split('?m=')[1] != styleSheetModified + "-" + styleSheetLength) {
+                console.log("Reloaded:");
+                console.log(req.getAllResponseHeaders());
+                styleSheets[i].setAttribute('href', styleSheetUrl + "?m=" + styleSheetModified + "-" + styleSheetLength);
             }
         }
     }
